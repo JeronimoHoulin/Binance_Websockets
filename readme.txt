@@ -5,3 +5,6 @@ que existe en el mercado de futuros vs spot en Binance, usando sus WebSockets co
 
 NO habrán órdenes que se puedan emitir con esta plataforma, ni contener claves para la API's de una cuenta en 
 Binance, ya que los WebSockets de Binance son streams públicos. 
+
+
+--------------------------------------------------------------------------------------------------------------
