@@ -1,0 +1,601 @@
+These are my different approaches and trials to get the right websocket response
+The main issue after a few trys was the waterfall dilema that the last Cryptos faced
+which where lagging behind in response time. so I decided to ASYNC everything, you can check
+that out in by cntl + F => "Intento #10" in this txt file. 
+
+
+////1er intento
+
+
+let symbol = "btcusdt";
+let symbol_f = "btcusd_210924";
+
+let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@trade`);
+let wsf = new WebSocket(`wss://dstream.binance.com/ws/${symbol_f}@trade`);
+
+
+//spot in doc
+let spot = document.getElementById("spot");
+//future in doc
+let fut = document.getElementById("future");
+//Tasa in doc
+let tasa_d = document.getElementById("tasa");
+let tasa_a= document.getElementById("tasa1");
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+////////////////SPOT call////////////////////////
+ws.onmessage = (event) => {
+    //console.log(event.data);
+    let json_obj = JSON.parse(event.data);
+    let spot_price = json_obj.p;
+    spot.innerText = parseFloat(spot_price).toFixed(2);
+    
+
+    ///////////////FUTURE Call///////////////////////
+    wsf.onmessage = (event) => {
+        //console.log(event.data);
+        let json_obj = JSON.parse(event.data);
+        let fut_price = json_obj.p///;
+        future.innerText = parseFloat(fut_price).toFixed(2);
+
+
+
+        //Operations
+        let tasa = fut_price / spot_price -1;
+        tasa_d.innerText = `${(tasa*100).toFixed(3)}%`;
+        
+        //console.log(tasa/diff);
+         //let anual = (tasa * 365)/diff;
+         let anual = ((((tasa/diff)+1)**365)-1)*100;
+         tasa_a.innerHTML = `${anual.toFixed(3)}%`;
+    
+    }
+    
+}
+
+//mozilla web socket async 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////2ndo intento
+
+let symbol = "btcusdt";
+let symbol_f = "btcusd_210924";
+
+////////////////SPOT call////////////////////////
+function connect() {
+    return new Promise(function(resolve, reject) {
+        var spot_server = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@trade`);
+        spot_server.onopen = function() {
+            resolve(spot_server);
+        };
+        spot_server.onerror = function(err) {
+            reject(err);
+        };
+
+    });
+}
+///////////////FUTURE Call///////////////////////
+function connect() {
+    return new Promise(function(resolve, reject) {
+        var fut_server = new WebSocket(`wss://dstream.binance.com/ws/${symbol_f}@trade`);
+        fut_server.onopen = function() {
+            resolve(fut_server);
+        };
+        fut_server.onerror = function(err) {
+            reject(err);
+        };
+
+    });
+}
+
+//Asynchronous
+async function myMethod() {
+    try {
+        let spot_server = await connect()
+        // ... use server
+        spott = JSON.parse(spot_server);
+        console.log(spott);
+    } catch (error) {
+        console.log("ooops ", error)
+    }
+  }
+
+
+
+
+
+
+
+
+
+////3er intento
+
+let symbol = "btcusdt";
+let symbol_f = "btcusd_210924";
+
+let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@trade`);
+let wsf = new WebSocket(`wss://dstream.binance.com/ws/${symbol_f}@trade`);
+
+
+//spot in doc
+let spot = document.getElementById("spot");
+//future in doc
+let fut = document.getElementById("future");
+//Tasa in doc
+let tasa_d = document.getElementById("tasa");
+let tasa_a= document.getElementById("tasa1");
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+
+async function mysync () {
+    try {
+        let fetched_spot = 0;
+        let fetched_fut = 0;
+
+        //Operations
+        let tasa = fetched_fut / fetched_spot -1;
+        tasa_d.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        //let anual = (tasa * 365)/diff;
+        let anual = ((((tasa/diff)+1)**365)-1)*100;
+        tasa_a.innerHTML = `${anual.toFixed(3)}%`;
+        console.log(anual);
+
+
+        ////////////////SPOT call////////////////////////
+        ws.onmessage = (event) => {
+            //console.log(event.data);
+            let json_obj = JSON.parse(event.data);
+            let spot_price = json_obj.p;
+            spot.innerText = parseFloat(spot_price).toFixed(2);
+
+            fetched_spot = spot_price;
+        }
+
+
+        ///////////////FUTURE Call///////////////////////
+        wsf.onmessage = (event) => {
+            //console.log(event.data);
+            let json_obj = JSON.parse(event.data);
+            let fut_price = json_obj.p///;
+            future.innerText = parseFloat(fut_price).toFixed(2);
+
+            fetched_fut = fut_price;
+        }
+
+
+    } catch (err){
+        console.log(err)
+        }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+///4to intento más simplificado del asynclet symbol = "btcusdt";
+
+let symbol = "btcusdt";
+let symbol_f = "btcusd_210924";
+
+let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@trade`);
+let wsf = new WebSocket(`wss://dstream.binance.com/ws/${symbol_f}@trade`);
+
+
+//spot in doc
+let spot = document.getElementById("spot");
+//future in doc
+let fut = document.getElementById("future");
+//Tasa in doc
+let tasa_d = document.getElementById("tasa");
+let tasa_a= document.getElementById("tasa1");
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+
+async function buscarspot(){
+    ws.onmessage = (event) => {
+        //console.log(event.data);
+        let json_obj = JSON.parse(event.data);
+        let spot_price = json_obj.p;
+        spot.innerText = parseFloat(spot_price).toFixed(2);
+        return spot_price;
+    }
+}
+async function buscarfut(){
+    wsf.onmessage = (event) => {
+        //console.log(event.data);
+        let json_obj = JSON.parse(event.data);
+        let fut_price = json_obj.p;
+        future.innerText = parseFloat(fut_price).toFixed(2);
+        return fut_price;
+    }
+
+}
+
+
+async function mysync() {
+    try {
+        const spot_price = await buscarspot();
+        console.log(spot_price);
+        const fut_price =  await buscarfut();
+
+        console.log(spot_price);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
+
+
+//5to intento 
+var spot_price = 0;
+
+async function fetchspot(){
+    ws.onmessage = (event) => {
+    //console.log(event.data);
+    let json_obj = JSON.parse(event.data);
+    spot_price = json_obj.p;
+    spot.innerText = parseFloat(spot_price).toFixed(2);
+    return spot_price;
+    }
+}
+
+
+async function mysync() {
+
+    await fetchspot()
+        .then(function(spot_price){
+            console.log(spot_price);
+         })
+    console.log(spot_price);
+
+}
+
+
+mysync();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////545234534er intento
+
+
+let symbol = "btcusdt";
+let symbol_f = "btcusd_210924";
+
+let ws = new WebSocket(`wss://stream.binance.com:9443/ws/${symbol}@trade`);
+let wsf = new WebSocket(`wss://dstream.binance.com/ws/${symbol_f}@trade`);
+
+
+//spot in doc
+let spot = document.getElementById("spot");
+//future in doc
+let fut = document.getElementById("future");
+//Tasa in doc
+let tasa_d = document.getElementById("tasa");
+let tasa_a= document.getElementById("tasa1");
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+////////////////SPOT call////////////////////////
+ws.onmessage = (event) => {
+    //console.log(event.data);
+    let json_obj = JSON.parse(event.data);
+    let spot_price = json_obj.p;
+    spot.innerText = parseFloat(spot_price).toFixed(2);
+}
+
+wsf.onmessage = (event) => {
+    //console.log(event.data);
+    let json_obj = JSON.parse(event.data);
+    let fut_price = json_obj.p;
+    future.innerText = parseFloat(fut_price).toFixed(2);
+}
+
+console.log( Number(spot) / Number(future));
+
+
+
+
+
+
+
+////545234535er intento
+//spot in doc
+let spot = document.getElementById("spot");
+//future in doc
+let fut = document.getElementById("future");
+//Tasa in doc
+let tasa_d = document.getElementById("tasa");
+let tasa_a= document.getElementById("tasa1");
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January = 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+//Call ech WS, one for spot and one for futures
+let spot_btc = "btcusdt";
+let fut_btc = "btcusd_210924";
+
+let ws_btc = new WebSocket(`wss://stream.binance.com:9443/ws/${spot_btc}@trade`);
+let wsf_btc = new WebSocket(`wss://dstream.binance.com/ws/${fut_btc}@trade`);
+
+
+let futy_btc = [];
+let spoty_btc = []; 
+let spotter_btc = null;
+let futter_btc = null;
+
+async function f1(){
+
+    ////////////////SPOT call////////////////////////
+    let promisespot = ws_btc.onmessage = (event) => {
+        //console.log(event.data);
+        let spot_p = JSON.parse(event.data).p;
+        spoty.push(JSON.parse(spot_p));
+        spot.innerText = parseFloat(spot_p).toFixed(2);
+
+        spotter_btc = spoty[spoty.length-1];
+    }
+
+
+    ////////////////FUTURE call////////////////////////
+    let promisefut = wsf_btc.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futy.push(JSON.parse(fut_p));
+        fut.innerText = parseFloat(fut_p).toFixed(2);
+
+        futter_btc = futy[futy.length-1];
+
+        
+        let tasa = futter_btc / spotter_btc -1;
+        console.log(tasa);
+        tasa_d.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff)+1)**365)-1)*100;
+        tasa_a.innerHTML = `${anual.toFixed(3)}%`;
+    }
+
+
+}
+
+f1();
+
+
+
+
+
+
+
+
+
+
+
+
+////intento nro 234u123u4123
+//Dates for anualized ret
+var maturity = new Date("09/24/2021");
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January = 0!
+var yyyy = today.getFullYear();
+
+today = new Date(`${mm + '/' + dd + '/' + yyyy}`);
+
+var diff = (maturity.getTime() - today.getTime())/(24*3600*1000);
+
+console.log(diff);
+
+//Set the document DIV
+let div_btc = document.querySelectorAll("btc");
+
+//Call ech WS, one for spot and one for futures
+let spot_btc = "btcusdt";
+let fut_btc = "btcusd_210924";
+
+let ws_btc = new WebSocket(`wss://stream.binance.com:9443/ws/${spot_btc}@trade`);
+let wsf_btc = new WebSocket(`wss://dstream.binance.com/ws/${fut_btc}@trade`);
+
+let futy_btc = [];
+let spoty_btc = []; 
+let spotter_btc = null;
+let futter_btc = null;
+
+async function f1(){
+    
+    ////////////////SPOT call////////////////////////
+    let promisespot = ws_btc.onmessage = (event) => {
+        //console.log(event.data);
+        let spot_p = JSON.parse(event.data).p;
+        spoty_btc.push(JSON.parse(spot_p));
+    }
+
+
+    ////////////////FUTURE call////////////////////////
+    let promisefut = wsf_btc.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futy_btc.push(JSON.parse(fut_p));
+
+
+        spotter_btc = spoty_btc[spoty_btc.length-1];
+        futter_btc = futy_btc[futy_btc.length-1];
+    
+        //Operations with both WS:
+        let tasa = futter_btc / spotter_btc -1;
+        let anual = ((((tasa/diff)+1)**365)-1)*100;
+
+        div_btc.innerHTML = `<h1 class= "subtitle">Spot Price (${spot_btc}):</h1>
+        <p class = "data" id ="spot">${parseFloat(spotter_btc).toFixed(2)}</p>
+    
+        <h1 class= "subtitle">Future Price (${fut_btc}):</h1>
+        <p class = "data" id ="future">${parseFloat(futter_btc).toFixed(2)}</p>
+    
+        <h1 class="subtitle">Direct Rate:</p>
+        <p class="tasas" id ="tasa">${(tasa*100).toFixed(3)}%</p>
+    
+        <h1 class="subtitle">Anual Rate:</p>
+            <p class="tasas" id ="tasa1">${anual.toFixed(3)}%</p>
+        `;
+    
+    }
+
+}
+
+f1();
+
+/*
+/////////////////////////////////FOR OTERH PAIRS
+let spot_eth = "ethusdt";
+let fut_eth = "ethusd_210924";
+
+let ws_eth = new WebSocket(`wss://stream.binance.com:9443/ws/${spot_eth}@trade`);
+let wsf_eth = new WebSocket(`wss://dstream.binance.com/ws/${fut_eth}@trade`);
+
+
+async function f2(){
+    let futy_eth = [];
+    let spoty_eth = []; 
+    let spotter_eth = null;
+    let futter_eth = null;
+
+    ////////////////SPOT call////////////////////////
+    let promisespot = ws_eth.onmessage = (event) => {
+        //console.log(event.data);
+        let spot_p = JSON.parse(event.data).p;
+        spoty_eth.push(JSON.parse(spot_p));
+        spot.innerText = parseFloat(spot_p).toFixed(2);
+
+        spotter_eth = spoty_eth[spoty_eth.length-1];
+    }
+
+
+    ////////////////FUTURE call////////////////////////
+    let promisefut = wsf_eth.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futy_eth.push(JSON.parse(fut_p));
+        fut.innerText = parseFloat(fut_p).toFixed(2);
+
+        futter_eth = futy_eth[futy_eth.length-1];
+
+        
+        let tasa = futter_eth / spotter_eth -1;
+        tasa_d.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff)+1)**365)-1)*100;
+        tasa_a.innerHTML = `${anual.toFixed(3)}%`;
+    }
+
+
+}
+
+f2();
+*/
