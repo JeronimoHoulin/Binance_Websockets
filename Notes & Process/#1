@@ -1,3 +1,5 @@
+//THIS WAS MY 1ST SUCCESS WITH ASYNC, Later I found out that the promises where slow for every tikker
+//so I now ASYNCed everything at once.
 
 //Dates for anualized ret
 var maturity = new Date("09/24/2021");
