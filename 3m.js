@@ -451,10 +451,10 @@ async function f6(){
         }else if(anual < 10){
             tasa_a_ada.style.color = "rgb(255, 0, 34)";
     }
-        spot_ada.innerText = parseFloat(spotter_ada).toFixed(2);
-        fut_ada.innerText = parseFloat(futter_ada).toFixed(2);
+        spot_ada.innerText = parseFloat(spotter_ada).toFixed(3);
+        fut_ada.innerText = parseFloat(futter_ada).toFixed(3);
 
-        tasa_a_ada.innerHTML = `${anual.toFixed(4)}%`;
+        tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
 
     }
 
