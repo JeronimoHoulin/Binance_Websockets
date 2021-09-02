@@ -38,18 +38,16 @@ async function f1(){
 
     //spot 3m
     let spot_btc = document.querySelector(".BTC .spot");
-    //spot 6m 
-    let spots_btc = document.querySelector(".contenedor6 .BTC .spot");
-
     //future 3m
     let fut_btc = document.querySelector(".BTC .future");
-    //future 6m 
-    let futf_btc = document.querySelector(".contenedor6 .BTC .future");
-
     //Tasa 3m 
     let tasa_d_btc = document.querySelector(".BTC .tasa");
     let tasa_a_btc= document.querySelector(".BTC .tasa1");
 
+    //spot 6m 
+    let spots_btc = document.querySelector(".contenedor6 .BTC .spot");
+    //future 6m 
+    let futf_btc = document.querySelector(".contenedor6 .BTC .future");
     //Tasa 6m 
     let tasaf_d_btc = document.querySelector(".contenedor6 .BTC .tasa");
     let tasaf_a_btc= document.querySelector(".contenedor6 .BTC .tasa1");
@@ -137,23 +135,39 @@ async function f1(){
     //NEXT CRYPTO
     let symb_eth = "ethusdt";
     let symb_f_eth = "ethusd_210924";
+    let symb_ff_eth = "ethusd_210924";
+
 
     let ws_eth = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_eth}@trade`);
     let wsf_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_eth}@markPrice`);
+    let wsff_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_eth}@markPrice`);
 
 
-    //spot in doc
+    //spot 3m
     let spot_eth = document.querySelector(".ETH .spot");
-    //future in doc
+    //future 3m
     let fut_eth = document.querySelector(".ETH .future");
-    //Tasa in doc
+    //Tasa 3m
     let tasa_d_eth = document.querySelector(".ETH .tasa");
     let tasa_a_eth = document.querySelector(".ETH .tasa1");
 
+    //spot 6m 
+    let spots_eth = document.querySelector(".contenedor6 .ETH .spot");
+    //future 6m 
+    let futf_eth = document.querySelector(".contenedor6 .ETH .future");
+    //Tasa 6m 
+    let tasaf_d_eth = document.querySelector(".contenedor6 .ETH .tasa");
+    let tasaf_a_eth= document.querySelector(".contenedor6 .ETH .tasa1");
+
     let futy_eth = [];
-    let spoty_eth = []; 
+    let futyf_eth = [];
+    let spoty_eth = [];  
+
     let spotter_eth = null;
     let futter_eth = null;
+    let futterf_eth = null;
+
+
     let enviado = [];
 
 
@@ -222,6 +236,37 @@ async function f1(){
         }
 
 
+    }
+
+
+    
+    ///////////////FUTURE call////////////////////////
+    wsff_eth.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_eth.push(JSON.parse(fut_p));
+
+        futterf_eth = futyf_eth[futyf_eth.length-1];
+
+        
+        let tasa = futterf_eth / spotter_eth -1;
+
+        tasaf_d_eth.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_eth.style.color = "rgb(197, 197, 197)";
+            futf_eth.style.color = "rgb(197, 197, 197)";
+            tasaf_a_eth.style.color = "rgb(0, 255, 34)";
+        }else if(anual < 10){
+            tasaf_a_eth.style.color = "rgb(255, 0, 34)";
+        }
+
+        spots_eth.innerText = parseFloat(spotter_eth).toFixed(2);
+        futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
+
+        tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
     }
 
 
