@@ -1,4 +1,4 @@
-console.log("Hello Chakana !!");
+console.log("LCDTM ALLBOYS !!");
 //Dates for anualized ret
 var maturity = new Date("09/24/2021");
 
@@ -454,7 +454,7 @@ async function f6(){
         spot_ada.innerText = parseFloat(spotter_ada).toFixed(2);
         fut_ada.innerText = parseFloat(futter_ada).toFixed(2);
 
-        tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+        tasa_a_ada.innerHTML = `${anual.toFixed(4)}%`;
 
     }
 
