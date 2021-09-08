@@ -91,7 +91,7 @@ async function f1(){
             tasa_a_btc.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasa_a_btc.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_btc.style.color = "black";}
 
         spot_btc.innerText = parseFloat(spotter_btc).toFixed(2);
         fut_btc.innerText = parseFloat(futter_btc).toFixed(2);
@@ -121,7 +121,7 @@ async function f1(){
             tasaf_a_btc.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasaf_a_btc.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_btc.style.color = "black";}
 
         spots_btc.innerText = parseFloat(spotter_btc).toFixed(2);
         futf_btc.innerText = parseFloat(futterf_btc).toFixed(2);
@@ -135,7 +135,7 @@ async function f1(){
     //NEXT CRYPTO
     let symb_eth = "ethusdt";
     let symb_f_eth = "ethusd_210924";
-    let symb_ff_eth = "ethusd_210924";
+    let symb_ff_eth = "ethusd_211231";
 
 
     let ws_eth = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_eth}@trade`);
@@ -204,7 +204,7 @@ async function f1(){
             tasa_a_eth.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasa_a_eth.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_eth.style.color = "black";}
 
         fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
         spot_eth.innerText = parseFloat(spotter_eth).toFixed(2);
@@ -261,7 +261,7 @@ async function f1(){
             tasaf_a_eth.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasaf_a_eth.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_eth.style.color = "black";}
 
         spots_eth.innerText = parseFloat(spotter_eth).toFixed(2);
         futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
@@ -277,23 +277,42 @@ async function f1(){
     //NEXT CRYPTO
     let symb_bnb = "bnbusdt";
     let symb_f_bnb = "bnbusd_210924";
+    let symb_ff_bnb = "bnbusd_211231";
+
 
     let ws_bnb = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_bnb}@trade`);
     let wsf_bnb = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_bnb}@markPrice`);
+    let wsff_bnb = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_bnb}@markPrice`);
 
 
-    //spot in doc
+
+    //spot 3m
     let spot_bnb = document.querySelector(".BNB .spot");
-    //future in doc
+    //future 3m
     let fut_bnb = document.querySelector(".BNB .future");
-    //Tasa in doc
+    //Tasa 3m
     let tasa_d_bnb = document.querySelector(".BNB .tasa");
     let tasa_a_bnb = document.querySelector(".BNB .tasa1");
 
+    //spot 6m 
+    let spots_bnb = document.querySelector(".contenedor6 .BNB .spot");
+    //future 6m 
+    let futf_bnb = document.querySelector(".contenedor6 .BNB .future");
+    //Tasa 6m 
+    let tasaf_d_bnb = document.querySelector(".contenedor6 .BNB .tasa");
+    let tasaf_a_bnb= document.querySelector(".contenedor6 .BNB .tasa1");
+
     let futy_bnb = [];
-    let spoty_bnb = []; 
+    let futyf_bnb = [];
+    let spoty_bnb = [];  
+
     let spotter_bnb = null;
     let futter_bnb = null;
+    let futterf_bnb = null;
+
+
+    //let enviado = [];
+
 
 
     ////////////////SPOT call////////////////////////
@@ -327,12 +346,43 @@ async function f1(){
             tasa_a_bnb.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasa_a_bnb.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_bnb.style.color = "black";}
 
         fut_bnb.innerText = parseFloat(futter_bnb).toFixed(2);
         spot_bnb.innerText = parseFloat(spotter_bnb).toFixed(2);
 
         tasa_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
+    }
+
+
+
+    ///////////////FUTURE call////////////////////////
+    wsff_bnb.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_bnb.push(JSON.parse(fut_p));
+
+        futterf_bnb = futyf_bnb[futyf_bnb.length-1];
+
+        
+        let tasa = futterf_bnb / spotter_bnb -1;
+
+        tasaf_d_bnb.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_bnb.style.color = "rgb(197, 197, 197)";
+            futf_bnb.style.color = "rgb(197, 197, 197)";
+            tasaf_a_bnb.style.color = "rgb(0, 255, 34)";
+        }else if(anual < 10){
+            tasaf_a_bnb.style.color = "rgb(255, 0, 34)";
+        }else{tasaf_a_bnb.style.color = "black";}
+
+        spots_bnb.innerText = parseFloat(spotter_bnb).toFixed(2);
+        futf_bnb.innerText = parseFloat(futterf_bnb).toFixed(2);
+
+        tasaf_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
     }
 
 
@@ -343,23 +393,41 @@ async function f1(){
     //NEXT CRYPTO
     let symb_dot = "dotusdt";
     let symb_f_dot = "dotusd_210924";
+    let symb_ff_dot = `dotusd_211231`;
 
     let ws_dot = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_dot}@trade`);
     let wsf_dot = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_dot}@markPrice`);
+    let wsff_dot = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_dot}@markPrice`);
 
 
-    //spot in doc
+
+    //spot 3m
     let spot_dot = document.querySelector(".DOT .spot");
-    //future in doc
+    //future 3m
     let fut_dot = document.querySelector(".DOT .future");
-    //Tasa in doc
+    //Tasa 3m
     let tasa_d_dot = document.querySelector(".DOT .tasa");
     let tasa_a_dot = document.querySelector(".DOT .tasa1");
 
+    //spot 6m 
+    let spots_dot = document.querySelector(".contenedor6 .DOT .spot");
+    //future 6m 
+    let futf_dot = document.querySelector(".contenedor6 .DOT .future");
+    //Tasa 6m 
+    let tasaf_d_dot = document.querySelector(".contenedor6 .DOT .tasa");
+    let tasaf_a_dot= document.querySelector(".contenedor6 .DOT .tasa1");
+
     let futy_dot = [];
-    let spoty_dot = []; 
+    let futyf_dot = [];
+    let spoty_dot = [];  
+
     let spotter_dot = null;
     let futter_dot = null;
+    let futterf_dot = null;
+
+
+    //let enviado = [];
+
 
 
     ////////////////SPOT call////////////////////////
@@ -391,7 +459,8 @@ async function f1(){
             fut_dot.style.color = "rgb(197, 197, 197)";
             spot_dot.style.color = "rgb(197, 197, 197)";
             tasa_a_dot.style.color = "rgb(0, 255, 34)";
-        }else if(anual < 10){tasa_a_dot.style.color = "rgb(255, 0, 34)";}
+        }else if(anual < 10){tasa_a_dot.style.color = "rgb(255, 0, 34)";
+        }else{tasa_a_dot.style.color = "black";}
 
         spot_dot.innerText = parseFloat(spotter_dot).toFixed(2);
         fut_dot.innerText = parseFloat(futter_dot).toFixed(2);
@@ -400,6 +469,35 @@ async function f1(){
 
     }
 
+
+    ///////////////FUTURE call////////////////////////
+    wsff_dot.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_dot.push(JSON.parse(fut_p));
+
+        futterf_dot = futyf_dot[futyf_dot.length-1];
+
+        
+        let tasa = futterf_dot / spotter_dot -1;
+
+        tasaf_d_dot.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_dot.style.color = "rgb(197, 197, 197)";
+            futf_dot.style.color = "rgb(197, 197, 197)";
+            tasaf_a_dot.style.color = "rgb(0, 255, 34)";
+        }else if(anual < 10){
+            tasaf_a_dot.style.color = "rgb(255, 0, 34)";
+        }else{tasaf_a_dot.style.color = "black";}
+
+        spots_dot.innerText = parseFloat(spotter_dot).toFixed(2);
+        futf_dot.innerText = parseFloat(futterf_dot).toFixed(2);
+
+        tasaf_a_dot.innerHTML = `${anual.toFixed(3)}%`;
+    }
 
 
 
@@ -410,24 +508,41 @@ async function f1(){
     //NEXT CRYPTO
     let symb_bch = "bchusdt";
     let symb_f_bch = "bchusd_210924";
+    let symb_ff_bch = `bchusd_211231`;
 
     let ws_bch = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_bch}@trade`);
     let wsf_bch = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_bch}@markPrice`); //@markPrice
+    let wsff_bch = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_bch}@markPrice`);
 
 
-    //spot in doc
+
+
+    //spot 3m
     let spot_bch = document.querySelector(".BCH .spot");
-    //future in doc
+    //future 3m
     let fut_bch = document.querySelector(".BCH .future");
-    //Tasa in doc
+    //Tasa 3m
     let tasa_d_bch = document.querySelector(".BCH .tasa");
     let tasa_a_bch = document.querySelector(".BCH .tasa1");
 
+    //spot 6m 
+    let spots_bch = document.querySelector(".contenedor6 .BCH .spot");
+    //future 6m 
+    let futf_bch = document.querySelector(".contenedor6 .BCH .future");
+    //Tasa 6m 
+    let tasaf_d_bch = document.querySelector(".contenedor6 .BCH .tasa");
+    let tasaf_a_bch= document.querySelector(".contenedor6 .BCH .tasa1");
+
     let futy_bch = [];
-    let spoty_bch = []; 
+    let futyf_bch = [];
+    let spoty_bch = [];  
+
     let spotter_bch = null;
     let futter_bch = null;
+    let futterf_bch = null;
 
+
+    //let enviado = [];
 
     ////////////////SPOT call////////////////////////
     ws_bch.onmessage = (event) => {
@@ -460,7 +575,8 @@ async function f1(){
             tasa_a_bch.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasa_a_bch.style.color = "rgb(255, 0, 34)";
-        }
+        }else{tasa_a_bch.style.color = "black";}
+
         spot_bch.innerText = parseFloat(spotter_bch).toFixed(2);
         fut_bch.innerText = parseFloat(futter_bch).toFixed(2);
 
@@ -468,7 +584,34 @@ async function f1(){
 
     }
 
+    ///////////////FUTURE call////////////////////////
+    wsff_bch.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_bch.push(JSON.parse(fut_p));
 
+        futterf_bch = futyf_bch[futyf_bch.length-1];
+
+        
+        let tasa = futterf_bch / spotter_bch -1;
+
+        tasaf_d_bch.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_bch.style.color = "rgb(197, 197, 197)";
+            futf_bch.style.color = "rgb(197, 197, 197)";
+            tasaf_a_bch.style.color = "rgb(0, 255, 34)";
+        }else if(anual < 10){
+            tasaf_a_bch.style.color = "rgb(255, 0, 34)";
+        }else{tasaf_a_bch.style.color = "black";}
+
+        spots_bch.innerText = parseFloat(spotter_bch).toFixed(2);
+        futf_bch.innerText = parseFloat(futterf_bch).toFixed(2);
+
+        tasaf_a_bch.innerHTML = `${anual.toFixed(3)}%`;
+    }
 
 
 
@@ -477,23 +620,40 @@ async function f1(){
     //NEXT CRYPTO
     let symb_ada = "adausdt";
     let symb_f_ada = "adausd_210924";
+    let symb_ff_ada = "adausd_211231";
 
     let ws_ada = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_ada}@trade`);
     let wsf_ada = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_ada}@trade`);
+    let wsff_ada = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_ada}@markPrice`);
 
 
-    //spot in doc
+
+    //spot 3m
     let spot_ada = document.querySelector(".ADA .spot");
-    //future in doc
+    //future 3m
     let fut_ada = document.querySelector(".ADA .future");
-    //Tasa in doc
+    //Tasa 3m
     let tasa_d_ada = document.querySelector(".ADA .tasa");
     let tasa_a_ada = document.querySelector(".ADA .tasa1");
 
+    //spot 6m 
+    let spots_ada = document.querySelector(".contenedor6 .ADA .spot");
+    //future 6m 
+    let futf_ada = document.querySelector(".contenedor6 .ADA .future");
+    //Tasa 6m 
+    let tasaf_d_ada = document.querySelector(".contenedor6 .ADA .tasa");
+    let tasaf_a_ada= document.querySelector(".contenedor6 .ADA .tasa1");
+
     let futy_ada = [];
-    let spoty_ada = []; 
+    let futyf_ada = [];
+    let spoty_ada = [];  
+
     let spotter_ada = null;
     let futter_ada = null;
+    let futterf_ada = null;
+
+
+    //let enviado = [];
 
 
     ////////////////SPOT call////////////////////////
@@ -527,13 +687,44 @@ async function f1(){
             tasa_a_ada.style.color = "rgb(0, 255, 34)";
         }else if(anual < 10){
             tasa_a_ada.style.color = "rgb(255, 0, 34)";
-    }
+        }else{tasa_a_ada.style.color = "black";}
+
         spot_ada.innerText = parseFloat(spotter_ada).toFixed(4);
         fut_ada.innerText = parseFloat(futter_ada).toFixed(4);
 
         tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
 
     }
+
+
+        ///////////////FUTURE call////////////////////////
+        wsff_ada.onmessage = (event) => {
+            //console.log(event.data);
+            let fut_p = JSON.parse(event.data).p;
+            futyf_ada.push(JSON.parse(fut_p));
+    
+            futterf_ada = futyf_ada[futyf_ada.length-1];
+    
+            
+            let tasa = futterf_ada / spotter_ada -1;
+    
+            tasaf_d_ada.innerText = `${(tasa*100).toFixed(3)}%`;
+    
+            let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+    
+            if(anual > 15){
+                spots_ada.style.color = "rgb(197, 197, 197)";
+                futf_ada.style.color = "rgb(197, 197, 197)";
+                tasaf_a_ada.style.color = "rgb(0, 255, 34)";
+            }else if(anual < 10){
+                tasaf_a_ada.style.color = "rgb(255, 0, 34)";
+            }else{tasaf_a_ada.style.color = "black";}
+    
+            spots_ada.innerText = parseFloat(spotter_ada).toFixed(2);
+            futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
+    
+            tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+        }
 
 
 
