@@ -98,7 +98,7 @@ async function f1(){
         }else{
             spot_btc.style.color = "black";
             fut_btc.style.color = "black";
-            tasa_a_btc.style.color = "black";}
+            tasa_a_btc.style.color = "yello";}
 
         spot_btc.innerText = parseFloat(spotter_btc).toFixed(2);
         fut_btc.innerText = parseFloat(futter_btc).toFixed(2);
@@ -133,7 +133,7 @@ async function f1(){
         }else{
             spots_btc.style.color = "black";
             futf_btc.style.color = "black";
-            tasa_a_btc.style.color = "black";}
+            tasa_a_btc.style.color = "yellow";}
 
         spots_btc.innerText = parseFloat(spotter_btc).toFixed(2);
         futf_btc.innerText = parseFloat(futterf_btc).toFixed(2);
@@ -215,17 +215,14 @@ async function f1(){
             fut_eth.style.color = "rgb(197, 197, 197)";
             spot_eth.style.color = "rgb(197, 197, 197)";
             tasa_a_eth.style.color = "rgb(0, 255, 34)";
-        }
-
-        if(anual < 10){
+        }else if(anual < 10){
             spot_eth.style.color = "black";
             fut_eth.style.color = "black";
             tasa_a_eth.style.color = "rgb(255, 0, 34)";
-        }
-        if(anual > 10 && anual < 12){
+        }else{
             spot_eth.style.color = "black";
             fut_eth.style.color = "black";
-            tasa_a_eth.style.color = "black";}
+            tasa_a_eth.style.color = "yellow";}
 
         fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
         spot_eth.innerText = parseFloat(spotter_eth).toFixed(2);
@@ -234,7 +231,7 @@ async function f1(){
         
 
         //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        if(anual > 15 && enviado.length == 0){
+        /*if(anual > 15 && enviado.length == 0){
             //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
 
             //jmtp mail
@@ -254,7 +251,7 @@ async function f1(){
             );
 
             enviado += 1;
-        }
+        }*/
 
 
     }
@@ -287,7 +284,7 @@ async function f1(){
         }else{
             spots_eth.style.color = "black";
             futf_eth.style.color = "black";
-            tasa_a_eth.style.color = "black";}
+            tasa_a_eth.style.color = "yellow";}
 
         spots_eth.innerText = parseFloat(spotter_eth).toFixed(2);
         futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
@@ -377,7 +374,7 @@ async function f1(){
         }else{
             spot_bnb.style.color = "black";
             fut_bnb.style.color = "black";
-            tasa_a_bnb.style.color = "black";}
+            tasa_a_bnb.style.color = "yellow";}
 
         fut_bnb.innerText = parseFloat(futter_bnb).toFixed(2);
         spot_bnb.innerText = parseFloat(spotter_bnb).toFixed(2);
@@ -413,7 +410,7 @@ async function f1(){
         }else{
             spots_bnb.style.color = "black";
             futf_bnb.style.color = "black";
-            tasaf_a_bnb.style.color = "black";}
+            tasaf_a_bnb.style.color = "yellow";}
 
         spots_bnb.innerText = parseFloat(spotter_bnb).toFixed(2);
         futf_bnb.innerText = parseFloat(futterf_bnb).toFixed(2);
@@ -502,7 +499,7 @@ async function f1(){
         }else{
             spot_dot.style.color = "black";
             fut_dot.style.color = "black";
-            tasa_a_dot.style.color = "black";}
+            tasa_a_dot.style.color = "yellow";}
 
         spot_dot.innerText = parseFloat(spotter_dot).toFixed(2);
         fut_dot.innerText = parseFloat(futter_dot).toFixed(2);
@@ -538,7 +535,7 @@ async function f1(){
         }else{
             spots_dot.style.color = "black";
             futf_dot.style.color = "black";
-            tasaf_a_dot.style.color = "black";}
+            tasaf_a_dot.style.color = "yellow";}
 
         spots_dot.innerText = parseFloat(spotter_dot).toFixed(2);
         futf_dot.innerText = parseFloat(futterf_dot).toFixed(2);
@@ -627,7 +624,7 @@ async function f1(){
         }else{
             spot_bch.style.color = "black";
             fut_bch.style.color = "black";
-            tasa_a_bch.style.color = "black";}
+            tasa_a_bch.style.color = "yellow";}
 
         spot_bch.innerText = parseFloat(spotter_bch).toFixed(2);
         fut_bch.innerText = parseFloat(futter_bch).toFixed(2);
@@ -662,7 +659,7 @@ async function f1(){
         }else{
             spots_bch.style.color = "black";
             futf_bch.style.color = "black";
-            tasaf_a_bch.style.color = "black";}
+            tasaf_a_bch.style.color = "yellow";}
 
         spots_bch.innerText = parseFloat(spotter_bch).toFixed(2);
         futf_bch.innerText = parseFloat(futterf_bch).toFixed(2);
@@ -749,7 +746,7 @@ async function f1(){
         }else{
             spot_ada.style.color = "black";
             fut_ada.style.color = "black";
-            tasa_a_ada.style.color = "black";}
+            tasa_a_ada.style.color = "yellow";}
 
         spot_ada.innerText = parseFloat(spotter_ada).toFixed(4);
         fut_ada.innerText = parseFloat(futter_ada).toFixed(4);
@@ -785,7 +782,7 @@ async function f1(){
             }else{
                 spots_ada.style.color = "black";
                 futf_ada.style.color = "black";
-                tasaf_a_ada.style.color = "black";}
+                tasaf_a_ada.style.color = "yellow";}
     
             spots_ada.innerText = parseFloat(spotter_ada).toFixed(2);
             futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
