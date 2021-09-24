@@ -1,5 +1,5 @@
 //Dates for anualized ret
-var maturity3m = new Date("09/24/2021");
+var maturity3m = new Date("03/25/2022");
 var maturity6m = new Date("12/31/2021");
 
 //Notify me when direct rate is larger than: 
@@ -21,9 +21,9 @@ var diff6m = (maturity6m.getTime() - today.getTime())/(24*3600*1000);
 console.log(diff3m);
 console.log(diff6m);
 
-let days3m = document.querySelector(".days3m");
+let days3m = document.querySelector(".days3m");  // los de marxo 2022
 days3m.textContent += `${diff3m}`;
-let days6m = document.querySelector(".days6m");
+let days6m = document.querySelector(".days6m"); //los de dic 2021
 days6m.textContent += `${diff6m}`;
 
 //
@@ -31,7 +31,7 @@ async function f1(){
 
     //First Crypto
     let symb_btc = "btcusdt";
-    let symb_f_btc = "btcusd_210924";
+    let symb_f_btc = "btcusd_220325";
     let symb_ff_btc = "btcusd_211231";
 
 
@@ -184,7 +184,7 @@ async function f1(){
 
     //NEXT CRYPTO
     let symb_eth = "ethusdt";
-    let symb_f_eth = "ethusd_210924";
+    let symb_f_eth = "ethusd_220325";
     let symb_ff_eth = "ethusd_211231";
 
 
@@ -348,7 +348,7 @@ async function f1(){
 
     //NEXT CRYPTO
     let symb_bnb = "bnbusdt";
-    let symb_f_bnb = "bnbusd_210924";
+    let symb_f_bnb = "bnbusd_220325";
     let symb_ff_bnb = "bnbusd_211231";
 
 
@@ -508,7 +508,7 @@ async function f1(){
 
     //NEXT CRYPTO
     let symb_dot = "dotusdt";
-    let symb_f_dot = "dotusd_210924";
+    let symb_f_dot = "dotusd_220325";
     let symb_ff_dot = `dotusd_211231`;
 
     let ws_dot = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_dot}@trade`);
@@ -667,7 +667,7 @@ async function f1(){
 
     //NEXT CRYPTO
     let symb_bch = "bchusdt";
-    let symb_f_bch = "bchusd_210924";
+    let symb_f_bch = "bchusd_220325";
     let symb_ff_bch = `bchusd_211231`;
 
     let ws_bch = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_bch}@trade`);
@@ -822,7 +822,7 @@ async function f1(){
 
     //NEXT CRYPTO
     let symb_ada = "adausdt";
-    let symb_f_ada = "adausd_210924";
+    let symb_f_ada = "adausd_220325";
     let symb_ff_ada = "adausd_211231";
 
     let ws_ada = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_ada}@trade`);
