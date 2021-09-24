@@ -42,20 +42,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_btc = document.querySelector(".BTC .spot");
+    let spot_btc = document.querySelector(".contenedor6 .BTC .spot");
     //future 3m
-    let fut_btc = document.querySelector(".BTC .future");
+    let fut_btc = document.querySelector(".contenedor6 .BTC .future");
     //Tasa 3m 
-    let tasa_d_btc = document.querySelector(".BTC .tasa");
-    let tasa_a_btc= document.querySelector(".BTC .tasa1");
+    let tasa_d_btc = document.querySelector(".contenedor6 .BTC .tasa");
+    let tasa_a_btc= document.querySelector(".contenedor6 .BTC .tasa1");
 
     //spot 6m 
-    let spots_btc = document.querySelector(".contenedor6 .BTC .spot");
+    let spots_btc = document.querySelector(".contenedor4 .BTC .spot");
     //future 6m 
-    let futf_btc = document.querySelector(".contenedor6 .BTC .future");
+    let futf_btc = document.querySelector(".contenedor4 .BTC .future");
     //Tasa 6m 
-    let tasaf_d_btc = document.querySelector(".contenedor6 .BTC .tasa");
-    let tasaf_a_btc= document.querySelector(".contenedor6 .BTC .tasa1");
+    let tasaf_d_btc = document.querySelector(".contenedor4 .BTC .tasa");
+    let tasaf_a_btc= document.querySelector(".contenedor4 .BTC .tasa1");
 
     let futy_btc = [];
     let futyf_btc = [];
@@ -194,20 +194,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_eth = document.querySelector(".ETH .spot");
+    let spot_eth = document.querySelector(".contenedor6 .ETH .spot");
     //future 3m
-    let fut_eth = document.querySelector(".ETH .future");
+    let fut_eth = document.querySelector(".contenedor6 .ETH .future");
     //Tasa 3m
-    let tasa_d_eth = document.querySelector(".ETH .tasa");
-    let tasa_a_eth = document.querySelector(".ETH .tasa1");
+    let tasa_d_eth = document.querySelector(".contenedor6 .ETH .tasa");
+    let tasa_a_eth = document.querySelector(".contenedor6 .ETH .tasa1");
 
     //spot 6m 
-    let spots_eth = document.querySelector(".contenedor6 .ETH .spot");
+    let spots_eth = document.querySelector(".contenedor4 .ETH .spot");
     //future 6m 
-    let futf_eth = document.querySelector(".contenedor6 .ETH .future");
+    let futf_eth = document.querySelector(".contenedor4 .ETH .future");
     //Tasa 6m 
-    let tasaf_d_eth = document.querySelector(".contenedor6 .ETH .tasa");
-    let tasaf_a_eth= document.querySelector(".contenedor6 .ETH .tasa1");
+    let tasaf_d_eth = document.querySelector(".contenedor4 .ETH .tasa");
+    let tasaf_a_eth= document.querySelector(".contenedor4 .ETH .tasa1");
 
     let futy_eth = [];
     let futyf_eth = [];
@@ -359,20 +359,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_bnb = document.querySelector(".BNB .spot");
+    let spot_bnb = document.querySelector(".contenedor6 .BNB .spot");
     //future 3m
-    let fut_bnb = document.querySelector(".BNB .future");
+    let fut_bnb = document.querySelector(".contenedor6 .BNB .future");
     //Tasa 3m
-    let tasa_d_bnb = document.querySelector(".BNB .tasa");
-    let tasa_a_bnb = document.querySelector(".BNB .tasa1");
+    let tasa_d_bnb = document.querySelector(".contenedor6 .BNB .tasa");
+    let tasa_a_bnb = document.querySelector(".contenedor6 .BNB .tasa1");
 
     //spot 6m 
-    let spots_bnb = document.querySelector(".contenedor6 .BNB .spot");
+    let spots_bnb = document.querySelector(".contenedor4 .BNB .spot");
     //future 6m 
-    let futf_bnb = document.querySelector(".contenedor6 .BNB .future");
+    let futf_bnb = document.querySelector(".contenedor4 .BNB .future");
     //Tasa 6m 
-    let tasaf_d_bnb = document.querySelector(".contenedor6 .BNB .tasa");
-    let tasaf_a_bnb= document.querySelector(".contenedor6 .BNB .tasa1");
+    let tasaf_d_bnb = document.querySelector(".contenedor4 .BNB .tasa");
+    let tasaf_a_bnb= document.querySelector(".contenedor4 .BNB .tasa1");
 
     let futy_bnb = [];
     let futyf_bnb = [];
@@ -518,20 +518,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_dot = document.querySelector(".DOT .spot");
+    let spot_dot = document.querySelector(".contenedor6 .DOT .spot");
     //future 3m
-    let fut_dot = document.querySelector(".DOT .future");
+    let fut_dot = document.querySelector(".contenedor6 .DOT .future");
     //Tasa 3m
-    let tasa_d_dot = document.querySelector(".DOT .tasa");
-    let tasa_a_dot = document.querySelector(".DOT .tasa1");
+    let tasa_d_dot = document.querySelector(".contenedor6 .DOT .tasa");
+    let tasa_a_dot = document.querySelector(".contenedor6 .DOT .tasa1");
 
     //spot 6m 
-    let spots_dot = document.querySelector(".contenedor6 .DOT .spot");
+    let spots_dot = document.querySelector(".contenedor4 .DOT .spot");
     //future 6m 
-    let futf_dot = document.querySelector(".contenedor6 .DOT .future");
+    let futf_dot = document.querySelector(".contenedor4 .DOT .future");
     //Tasa 6m 
-    let tasaf_d_dot = document.querySelector(".contenedor6 .DOT .tasa");
-    let tasaf_a_dot= document.querySelector(".contenedor6 .DOT .tasa1");
+    let tasaf_d_dot = document.querySelector(".contenedor4 .DOT .tasa");
+    let tasaf_a_dot= document.querySelector(".contenedor4 .DOT .tasa1");
 
     let futy_dot = [];
     let futyf_dot = [];
@@ -678,20 +678,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_bch = document.querySelector(".BCH .spot");
+    let spot_bch = document.querySelector(".contenedor6 .BCH .spot");
     //future 3m
-    let fut_bch = document.querySelector(".BCH .future");
+    let fut_bch = document.querySelector(".contenedor6 .BCH .future");
     //Tasa 3m
-    let tasa_d_bch = document.querySelector(".BCH .tasa");
-    let tasa_a_bch = document.querySelector(".BCH .tasa1");
+    let tasa_d_bch = document.querySelector(".contenedor6 .BCH .tasa");
+    let tasa_a_bch = document.querySelector(".contenedor6 .BCH .tasa1");
 
     //spot 6m 
-    let spots_bch = document.querySelector(".contenedor6 .BCH .spot");
+    let spots_bch = document.querySelector(".contenedor4 .BCH .spot");
     //future 6m 
-    let futf_bch = document.querySelector(".contenedor6 .BCH .future");
+    let futf_bch = document.querySelector(".contenedor4 .BCH .future");
     //Tasa 6m 
-    let tasaf_d_bch = document.querySelector(".contenedor6 .BCH .tasa");
-    let tasaf_a_bch= document.querySelector(".contenedor6 .BCH .tasa1");
+    let tasaf_d_bch = document.querySelector(".contenedor4 .BCH .tasa");
+    let tasaf_a_bch= document.querySelector(".contenedor4 .BCH .tasa1");
 
     let futy_bch = [];
     let futyf_bch = [];
@@ -832,20 +832,20 @@ async function f1(){
 
 
     //spot 3m
-    let spot_ada = document.querySelector(".ADA .spot");
+    let spot_ada = document.querySelector(".contenedor6 .ADA .spot");
     //future 3m
-    let fut_ada = document.querySelector(".ADA .future");
+    let fut_ada = document.querySelector(".contenedor6 .ADA .future");
     //Tasa 3m
-    let tasa_d_ada = document.querySelector(".ADA .tasa");
-    let tasa_a_ada = document.querySelector(".ADA .tasa1");
+    let tasa_d_ada = document.querySelector(".contenedor6 .ADA .tasa");
+    let tasa_a_ada = document.querySelector(".contenedor6 .ADA .tasa1");
 
     //spot 6m 
-    let spots_ada = document.querySelector(".contenedor6 .ADA .spot");
+    let spots_ada = document.querySelector(".contenedor4 .ADA .spot");
     //future 6m 
-    let futf_ada = document.querySelector(".contenedor6 .ADA .future");
+    let futf_ada = document.querySelector(".contenedor4 .ADA .future");
     //Tasa 6m 
-    let tasaf_d_ada = document.querySelector(".contenedor6 .ADA .tasa");
-    let tasaf_a_ada= document.querySelector(".contenedor6 .ADA .tasa1");
+    let tasaf_d_ada = document.querySelector(".contenedor4 .ADA .tasa");
+    let tasaf_a_ada= document.querySelector(".contenedor4 .ADA .tasa1");
 
     let futy_ada = [];
     let futyf_ada = [];
