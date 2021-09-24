@@ -146,37 +146,7 @@ async function f1(){
         tasaf_a_btc.innerHTML = `${anual.toFixed(3)}%`;
 
 
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff6m*365 > notify1          && enviado == 0   && spotter_btc != NaN && futter_btc != NaN){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580; El BTC a ${diff6m}días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
+   
     }
 
 
@@ -269,37 +239,7 @@ async function f1(){
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
         
 
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff3m*365 > notify1          && enviado == 0   && spotter_eth != NaN && futter_eth != NaN){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580;El ETH ${diff3m} días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
+        
 
 
 
@@ -468,37 +408,7 @@ async function f1(){
 
 
 
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff6m*365 > notify1          && enviado == 0   && spotter_bnb != NaN && futter_bnb != NaN){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580; El BNB a ${diff6m} días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
+        
     }
 
 
@@ -626,37 +536,7 @@ async function f1(){
         tasaf_a_dot.innerHTML = `${anual.toFixed(3)}%`;
 
 
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff6m*365 > notify1          && enviado == 0   && spotter_dot != NaN && futter_dot != NaN){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580; El DOT a ${diff6m} días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
+        
     }
 
 
@@ -782,37 +662,7 @@ async function f1(){
 
         tasaf_a_bch.innerHTML = `${anual.toFixed(3)}%`;
 
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual NOF larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff6m*365 > notify1          && enviado == 0   && spotter_bch != NaN && futter_bch != NaN){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580; El BCH a ${diff6m} días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
+       
 
     }
 
@@ -939,37 +789,7 @@ async function f1(){
             tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
 
 
-            //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-            // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-            if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff6m*365 > notify1          && enviado == 0   && spotter_ada != NaN && futter_ada != NaN){
-                //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-                //jmtp mail
-                Email.send({
-                    SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                    To : 'jeronimo.houlin@gmail.com',
-                    From : "jeronimoaisuru@gmail.com",
-                    Subject : "Avisoo !",
-                    Body : `Código: 2580;El  ADA a ${diff6m} días está en ${notify1}% anual NOF, avisar !`,
-                    Attachments : [
-                    {
-                        name : "chakanaimggg.png",
-                        path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                    }]
-                }).then(
-                message => console.log("Se ha enviado un mail.")
-                );
-
-                enviado += 1;
-                window.localStorage.setItem("Enviado", enviado);
-
-            }
-
-            //Si caeo 70% la tasa, volver a habilitar el envío.
-            if(anual < notify1*(1-resend) && enviado ==1){
-                enviado -= 1;
-                window.localStorage.setItem("Enviado", enviado);
-            }
+            
 
 
         }
