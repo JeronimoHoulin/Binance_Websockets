@@ -153,7 +153,7 @@ async function f1(){
 
             //jmtp mail
             Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                SecureToken : "",
                 To : 'jeronimo.houlin@gmail.com',
                 From : "jeronimoaisuru@gmail.com",
                 Subject : "Avisoo !",
@@ -276,7 +276,7 @@ async function f1(){
 
             //jmtp mail
             Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                SecureToken : "",
                 To : 'jeronimo.houlin@gmail.com',
                 From : "jeronimoaisuru@gmail.com",
                 Subject : "Avisoo !",
@@ -475,7 +475,7 @@ async function f1(){
 
             //jmtp mail
             Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                SecureToken : "",
                 To : 'jeronimo.houlin@gmail.com',
                 From : "jeronimoaisuru@gmail.com",
                 Subject : "Avisoo !",
@@ -633,7 +633,7 @@ async function f1(){
 
             //jmtp mail
             Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                SecureToken : "",
                 To : 'jeronimo.houlin@gmail.com',
                 From : "jeronimoaisuru@gmail.com",
                 Subject : "Avisoo !",
@@ -789,7 +789,7 @@ async function f1(){
 
             //jmtp mail
             Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                SecureToken : "",
                 To : 'jeronimo.houlin@gmail.com',
                 From : "jeronimoaisuru@gmail.com",
                 Subject : "Avisoo !",
@@ -946,7 +946,7 @@ async function f1(){
 
                 //jmtp mail
                 Email.send({
-                    SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
+                    SecureToken : "",
                     To : 'jeronimo.houlin@gmail.com',
                     From : "jeronimoaisuru@gmail.com",
                     Subject : "Avisoo !",
