@@ -7,19 +7,25 @@ h1.title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 38px;
     color: rgb(129, 1, 189);
-    margin-top: 40px;
+    margin-top: 5px;
     margin-bottom: 0%;
   	margin-left:0%;
+}
+
+img.chakn{
+    width:30%;
 }
 p.aclaraciones{
     width: 315px;
     font-family:sans-serif;
 }
-p.linky{
-    text-decoration: none;
+
+
+a.linky{
     color: blueviolet;
-    margin-top: 2%;
-    margin-left: 10%;
+    text-decoration: none;
+    margin-top: 5%;
+    margin-left: 1%
 }
 
 p.vencimiento{
@@ -56,9 +62,9 @@ p.tasas{
 }
 div.contenedor1{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 90px;
+    flex-direction: column;
+    justify-content:space-between;
+    height: 150px;
 
     margin-bottom: 5px;
 }
