@@ -247,37 +247,6 @@ async function f1(){
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
     
-        //E-MAIL NOTIFICATION      futter_eth < spotter_eth
-        // Direct rate larger than costs            Anual larger then notify1                    Message not sent      NOT NAN
-        if(tasa*100 > 0.3               &&          (tasa*100-0.3)/diff3m*365 > notify1          && enviado == 0   && isNaN(spotter_eth) != true && isNaN(futter_eth) != true){
-            //['jhoulin.chakana@gmail.com', "ignacio@chakana.com.ar", "elliot@chakana.com.ar ", "arigoli@chakana.com.ar", "tbazzani.chakana@gmail.com"]
-
-            //jmtp mail
-            Email.send({
-                SecureToken : "8c63b637-7fb4-4890-a902-d46695ed167a",
-                To : 'jeronimo.houlin@gmail.com',
-                From : "jeronimoaisuru@gmail.com",
-                Subject : "Avisoo !",
-                Body : `Código: 2580;El ETH ${diff3m} días está en ${notify1}% anual NOF, avisar !`,
-                Attachments : [
-                {
-                    name : "chakanaimggg.png",
-                    path : "https://media-exp1.licdn.com/dms/image/C4E0BAQHxRffplAaY-w/company-logo_200_200/0/1549408729033?e=2159024400&v=beta&t=QMk5flu1ZaH6Yhq9JzW9TMyd-kt6R3r2amTmfjqp11s"
-                }]
-            }).then(
-            message => console.log("Se ha enviado un mail.")
-            );
-
-            enviado += 1;
-            window.localStorage.setItem("Enviado", enviado);
-
-        }
-
-        //Si caeo 70% la tasa, volver a habilitar el envío.
-        if(anual < notify1*(1-resend) && enviado ==1){
-            enviado -= 1;
-            window.localStorage.setItem("Enviado", enviado);
-        }
         
 
 
