@@ -1,13 +1,16 @@
 body{
     background-color: rgba(30, 31, 32, 0.945);
-    
+
+}
+::-webkit-scrollbar {
+    display: none;
 }
 
 h1.title{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 38px;
     color: rgb(129, 1, 189);
-    margin-top: 5px;
+    margin-top: 1%;
     margin-bottom: 0%;
   	margin-left:0%;
 }
@@ -16,8 +19,9 @@ img.chakn{
     width:30%;
 }
 p.aclaraciones{
-    width: 315px;
+    width: 60%;
     font-family:sans-serif;
+    margin-top: 3%;
 }
 
 
@@ -38,12 +42,12 @@ p.diasx{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0px;
     width: 200px; 
-    margin-left: 10%;
 }
 
 div.contenetuti{
     display: flex;
     flex-direction: column;
+
 }
 
 h1.subtitle{
@@ -66,32 +70,29 @@ div.contenedor1{
     justify-content:space-between;
     height: 150px;
 
-    margin-bottom: 5px;
+    margin-bottom: 7%;
 }
-div.contenedor2{
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start;
 
-    height: 100px;
-    margin-bottom: 1px;
-}
 div.contenedor3{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     margin-left: 0%;
+    margin-top:1%;
 }
 div.contenedor4{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
     height: fit-content;
+    margin-top:1%;
+
 }
 
 div.contenedor5{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     margin-left: 0%;
     margin-top: 1%;
@@ -99,8 +100,11 @@ div.contenedor5{
 div.contenedor6{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
     height: fit-content;
+    margin-top:1%;
+
 }
 div.BTC{
     padding: 1%;

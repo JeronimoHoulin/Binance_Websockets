@@ -246,7 +246,6 @@ async function f1(){
         fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
-    
         
 
 
@@ -284,6 +283,9 @@ async function f1(){
 
         futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
         tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
+
+
+
     }
 
 
