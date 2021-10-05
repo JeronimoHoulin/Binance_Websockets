@@ -244,9 +244,7 @@ async function f1(){
             tasa_a_eth.style.color = "yellow";}
 
         fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
-        tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
-
-        
+        tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;        
 
 
     }
@@ -279,11 +277,10 @@ async function f1(){
         }else{
             spots_eth.style.color = "black";
             futf_eth.style.color = "black";
-            tasa_a_eth.style.color = "yellow";}
+            tasaf_a_eth.style.color = "yellow";}
 
         futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
         tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
-
 
 
     }
@@ -630,6 +627,9 @@ async function f1(){
 
         fut_bch.innerText = parseFloat(futter_bch).toFixed(2);
         tasa_a_bch.innerHTML = `${anual.toFixed(3)}%`;
+
+       
+
 
     }
 
