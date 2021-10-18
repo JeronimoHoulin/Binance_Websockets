@@ -159,3 +159,12 @@ div.ADA{
 
     width: fit-content;
 }
+
+div.XRP{
+    padding: 1%;
+    border-style: solid;
+    border-color: rgb(2, 2, 100);
+    border-width: 1px;
+
+    width: fit-content;
+}

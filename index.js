@@ -1,9 +1,18 @@
 //Dates for anualized ret
-var maturity3m = new Date("12/31/2021");
-var maturity6m = new Date("03/25/2022");
+var mat3m = "12/31/2021";
+var mat6m = "03/25/2022";
+
+let vency3m = document.querySelector(".contenedor3 .vencimiento");
+let vency6m = document.querySelector(".contenedor5 .vencimiento");
+vency3m.textContent += mat3m;
+vency6m.textContent += mat6m;
 
 let date1 = "211231";
 let date2 = "220325"
+
+
+var maturity3m = new Date(mat3m);
+var maturity6m = new Date(mat6m);
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -151,7 +160,7 @@ async function f1(){
         }else if(anual < 10){
             spots_btc.style.color = "black";
             futf_btc.style.color = "black";
-            tasa_d_eth.style.color = "black";
+            tasa_d_ada.style.color = "black";
             tasaf_a_btc.style.color = "rgb(255, 0, 34)";
             
         }else{
@@ -177,20 +186,21 @@ async function f1(){
 
 
     let ws_eth = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_eth}@trade`);
-    let wsf_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_eth}@trade`);
-    let wsff_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_eth}@markPrice`);
+    let wsf_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_eth}@trade`);//@markPrice
+    let wsff_eth = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_eth}@trade`);
+
 
 
     //spot 3m
-    let spot_eth = document.querySelector(".contenedor4 .ETH .spot");
+    let spot_eth = document.querySelector(".contenedor4 .ETH .spot");  //6meses
     //future 3m
     let fut_eth = document.querySelector(".contenedor4 .ETH .future");
-    //Tasa 3m
+    //Tasa 3m 
     let tasa_d_eth = document.querySelector(".contenedor4 .ETH .tasa");
-    let tasa_a_eth = document.querySelector(".contenedor4 .ETH .tasa1");
+    let tasa_a_eth= document.querySelector(".contenedor4 .ETH .tasa1");
 
     //spot 6m 
-    let spots_eth = document.querySelector(".contenedor6 .ETH .spot");
+    let spots_eth = document.querySelector(".contenedor6 .ETH .spot");   //3meses
     //future 6m 
     let futf_eth = document.querySelector(".contenedor6 .ETH .future");
     //Tasa 6m 
@@ -204,7 +214,6 @@ async function f1(){
     let spotter_eth = null;
     let futter_eth = null;
     let futterf_eth = null;
-
 
 
     ////////////////SPOT call////////////////////////
@@ -227,18 +236,19 @@ async function f1(){
         futy_eth.push(JSON.parse(fut_p));
 
         futter_eth = futy_eth[futy_eth.length-1];
-        
+
         let tasa = futter_eth / spotter_eth -1;
 
         tasa_d_eth.innerText = `${(tasa*100).toFixed(3)}%`;
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
+
+        fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
-
-        if(anual > 15){
-            fut_eth.style.color = "rgb(197, 197, 197)";
+        if(anual >= 15){
             spot_eth.style.color = "rgb(197, 197, 197)";
+            fut_eth.style.color = "rgb(197, 197, 197)";
             tasa_a_eth.style.color = "rgb(0, 255, 34)";
             tasa_d_eth.style.color = "rgb(0, 255, 34)";
 
@@ -248,14 +258,11 @@ async function f1(){
             tasa_d_eth.style.color = "black";
             tasa_a_eth.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_eth.style.color = "black";
-            fut_eth.style.color = "black";
-            tasa_a_eth.style.color = "yellow";
+            spot_eth.style.color = "rgb(197, 197, 197)";
+            fut_eth.style.color = "rgb(197, 197, 197)";
+            tasa_a_eth.style.color = "rgb(197, 197, 197)";
             tasa_d_eth.style.color = "yellow";
         }
-
-        fut_eth.innerText = parseFloat(futter_eth).toFixed(2);
-        tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
 
 
@@ -263,7 +270,6 @@ async function f1(){
     }
 
 
-    
     ///////////////FUTURE call////////////////////////
     wsff_eth.onmessage = (event) => {
         //console.log(event.data);
@@ -272,12 +278,14 @@ async function f1(){
 
         futterf_eth = futyf_eth[futyf_eth.length-1];
 
-        
         let tasa = futterf_eth / spotter_eth -1;
 
         tasaf_d_eth.innerText = `${(tasa*100).toFixed(3)}%`;
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+        
+        futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
+        tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
         if(anual > 15){
             spots_eth.style.color = "rgb(197, 197, 197)";
@@ -288,19 +296,20 @@ async function f1(){
         }else if(anual < 10){
             spots_eth.style.color = "black";
             futf_eth.style.color = "black";
-            tasaf_d_eth.style.color = "black";
+            tasa_d_ada.style.color = "black";
             tasaf_a_eth.style.color = "rgb(255, 0, 34)";
+            
         }else{
             spots_eth.style.color = "black";
             futf_eth.style.color = "black";
-            tasaf_a_eth.style.color = "yellow";
-            tasaf_d_eth.style.color = "yellow";
+            tasa_a_eth.style.color = "yellow";
+            tasa_d_eth.style.color = "yellow";
+            
         }
 
-        futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
-        tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
 
+   
     }
 
 
@@ -724,10 +733,10 @@ async function f1(){
     let symb_f_ada = `adausd_${date1}`;
     let symb_ff_ada = `adausd_${date2}`;
 
+
     let ws_ada = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_ada}@trade`);
     let wsf_ada = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_ada}@trade`);
     let wsff_ada = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_ada}@markPrice`);
-
 
 
     //spot 3m
@@ -755,8 +764,6 @@ async function f1(){
     let futterf_ada = null;
 
 
-    //let enviado = [];
-
 
     ////////////////SPOT call////////////////////////
     ws_ada.onmessage = (event) => {
@@ -766,9 +773,8 @@ async function f1(){
 
         spotter_ada = spoty_ada[spoty_ada.length-1];
 
-        spot_ada.innerText = parseFloat(spotter_ada).toFixed(4);
-        spots_ada.innerText = parseFloat(spotter_ada).toFixed(4);
-
+        spot_ada.innerText = parseFloat(spotter_ada).toFixed(2);
+        spots_ada.innerText = parseFloat(spotter_ada).toFixed(2);
     }
 
 
@@ -779,19 +785,21 @@ async function f1(){
         futy_ada.push(JSON.parse(fut_p));
 
         futter_ada = futy_ada[futy_ada.length-1];
-        //console.log(fut_p);
         
         let tasa = futter_ada / spotter_ada -1;
 
         tasa_d_ada.innerText = `${(tasa*100).toFixed(3)}%`;
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
+        tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+
 
         if(anual > 15){
             fut_ada.style.color = "rgb(197, 197, 197)";
             spot_ada.style.color = "rgb(197, 197, 197)";
             tasa_a_ada.style.color = "rgb(0, 255, 34)";
             tasa_d_ada.style.color = "rgb(0, 255, 34)";
+
         }else if(anual < 10){
             spot_ada.style.color = "black";
             fut_ada.style.color = "black";
@@ -802,61 +810,199 @@ async function f1(){
             fut_ada.style.color = "black";
             tasa_a_ada.style.color = "yellow";
             tasa_d_ada.style.color = "yellow";
-
         }
 
-
-        fut_ada.innerText = parseFloat(futter_ada).toFixed(4);
+        fut_ada.innerText = parseFloat(futter_ada).toFixed(2);
         tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+
+
+
 
     }
 
 
-        ///////////////FUTURE call////////////////////////
-        wsff_ada.onmessage = (event) => {
-            //console.log(event.data);
-            let fut_p = JSON.parse(event.data).p;
-            futyf_ada.push(JSON.parse(fut_p));
     
-            futterf_ada = futyf_ada[futyf_ada.length-1];
-    
-            
-            let tasa = futterf_ada / spotter_ada -1;
-    
-            tasaf_d_ada.innerText = `${(tasa*100).toFixed(3)}%`;
-    
-            let anual = ((((tasa/diff6m)+1)**365)-1)*100;
-    
-            if(anual > 15){
-                spots_ada.style.color = "rgb(197, 197, 197)";
-                futf_ada.style.color = "rgb(197, 197, 197)";
-                tasaf_a_ada.style.color = "rgb(0, 255, 34)";
-                tasaf_d_ada.style.color = "rgb(0, 255, 34)";
+    ///////////////FUTURE call////////////////////////
+    wsff_ada.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_ada.push(JSON.parse(fut_p));
 
-            }else if(anual < 10){
-                spots_ada.style.color = "black";
-                futf_ada.style.color = "black";
-                tasaf_d_ada.style.color = "black";
-                tasaf_a_ada.style.color = "rgb(255, 0, 34)";
-            }else{
-                spots_ada.style.color = "black";
-                futf_ada.style.color = "black";
-                tasaf_a_ada.style.color = "yellow";
-                tasaf_d_ada.style.color = "yellow";
+        futterf_ada = futyf_ada[futyf_ada.length-1];
 
-            }
-    
-            futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
-    
-            tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+        
+        let tasa = futterf_ada / spotter_ada -1;
+
+        tasaf_d_ada.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_ada.style.color = "rgb(197, 197, 197)";
+            futf_ada.style.color = "rgb(197, 197, 197)";
+            tasaf_a_ada.style.color = "rgb(0, 255, 34)";
+            tasaf_d_ada.style.color = "rgb(0, 255, 34)";
+
+        }else if(anual < 10){
+            spots_ada.style.color = "black";
+            futf_ada.style.color = "black";
+            tasaf_d_ada.style.color = "black";
+            tasaf_a_ada.style.color = "rgb(255, 0, 34)";
+        }else{
+            spots_ada.style.color = "black";
+            futf_ada.style.color = "black";
+            tasaf_a_ada.style.color = "yellow";
+            tasaf_d_ada.style.color = "yellow";
+        }
+
+        futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
+        tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
 
 
-            
+    }
 
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //NEXT CRYPTO
+    let symb_xrp = "xrpusdt";
+    let symb_f_xrp = `xrpusd_${date1}`;
+    let symb_ff_xrp  = `xrpusd${date2}`;
+
+    let ws_xrp  = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_xrp}@trade`);
+    let wsf_xrp  = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_xrp}@trade`);
+    let wsff_xrp  = new WebSocket(`wss://dstream.binance.com/ws/${symb_ff_xrp}@markPrice`);
+
+
+
+    //spot 3m
+    let spot_xrp = document.querySelector(".contenedor4 .XRP .spot");
+    //future 3m
+    let fut_xrp = document.querySelector(".contenedor4 .XRP .future");
+    //Tasa 3m
+    let tasa_d_xrp = document.querySelector(".contenedor4 .XRP .tasa");
+    let tasa_a_xrp = document.querySelector(".contenedor4 .XRP .tasa1");
+
+    //spot 6m 
+    let spots_xrp = document.querySelector(".contenedor6 .XRP .spot");
+    //future 6m 
+    let futf_xrp = document.querySelector(".contenedor6 .XRP .future");
+    //Tasa 6m 
+    let tasaf_d_xrp = document.querySelector(".contenedor6 .XRP .tasa");
+    let tasaf_a_xrp= document.querySelector(".contenedor6 .XRP .tasa1");
+
+    let futy_xrp = [];
+    let futyf_xrp = [];
+    let spoty_xrp = [];  
+
+    let spotter_xrp = null;
+    let futter_xrp = null;
+    let futterf_xrp = null;
+
+
+    //let enviado = [];
+
+
+    ////////////////SPOT call////////////////////////
+    ws_xrp.onmessage = (event) => {
+        //console.log(event.data);
+        let spot_p = JSON.parse(event.data).p;
+        spoty_xrp.push(JSON.parse(spot_p));
+
+        spotter_xrp = spoty_xrp[spoty_xrp.length-1];
+
+        spot_xrp.innerText = parseFloat(spotter_xrp).toFixed(4);
+        spots_xrp.innerText = parseFloat(spotter_xrp).toFixed(4);
+
+    }
+
+
+    ////////////////FUTURE call////////////////////////
+    wsf_xrp.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futy_xrp.push(JSON.parse(fut_p));
+
+        futter_xrp = futy_xrp[futy_xrp.length-1];
+        //console.log(fut_p);
+        
+        let tasa = futter_xrp/ spotter_xrp -1;
+
+        tasa_d_xrp.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff3m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            fut_xrp.style.color = "rgb(197, 197, 197)";
+            spot_xrp.style.color = "rgb(197, 197, 197)";
+            tasa_a_xrp.style.color = "rgb(0, 255, 34)";
+            tasa_d_xrp.style.color = "rgb(0, 255, 34)";
+        }else if(anual < 10){
+            spot_xrp.style.color = "black";
+            fut_xrp.style.color = "black";
+            tasa_d_xrp.style.color = "black";
+            tasa_a_xrp.style.color = "rgb(255, 0, 34)";
+        }else{
+            spot_xrp.style.color = "black";
+            fut_xrp.style.color = "black";
+            tasa_a_xrp.style.color = "yellow";
+            tasa_d_xrp.style.color = "yellow";
 
         }
 
 
+        fut_xrp.innerText = parseFloat(futter_xrp).toFixed(4);
+        tasa_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
+
+    }
+
+
+    ///////////////FUTURE call////////////////////////
+    wsff_xrp.onmessage = (event) => {
+        //console.log(event.data);
+        let fut_p = JSON.parse(event.data).p;
+        futyf_xrp.push(JSON.parse(fut_p));
+
+        futterf_xrp = futyf_xrp[futyf_xrp.length-1];
+
+        
+        let tasa = futterf_xrp / spotter_xrp -1;
+
+        tasaf_d_xrp.innerText = `${(tasa*100).toFixed(3)}%`;
+
+        let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        if(anual > 15){
+            spots_xrp.style.color = "rgb(197, 197, 197)";
+            futf_xrp.style.color = "rgb(197, 197, 197)";
+            tasaf_a_xrp.style.color = "rgb(0, 255, 34)";
+            tasaf_d_xrp.style.color = "rgb(0, 255, 34)";
+
+        }else if(anual < 10){
+            spots_xrp.style.color = "black";
+            futf_xrp.style.color = "black";
+            tasaf_d_xrp.style.color = "black";
+            tasaf_a_xrp.style.color = "rgb(255, 0, 34)";
+        }else{
+            spots_xrp.style.color = "black";
+            futf_xrp.style.color = "black";
+            tasaf_a_xrp.style.color = "yellow";
+            tasaf_d_xrp.style.color = "yellow";
+
+        }
+
+        futf_xrp.innerText = parseFloat(futterf_xrp).toFixed(2);
+
+        tasaf_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
+
+
+        
+
+
+    }
 
 }
 
