@@ -870,7 +870,7 @@ async function f1(){
     //NEXT CRYPTO
     let symb_xrp = "xrpusdt";
     let symb_f_xrp = `xrpusd_${date1}`;
-    let symb_ff_xrp  = `xrpusd${date2}`;
+    let symb_ff_xrp  = `xrpusd_${date2}`;
 
     let ws_xrp  = new WebSocket(`wss://stream.binance.com:9443/ws/${symb_xrp}@trade`);
     let wsf_xrp  = new WebSocket(`wss://dstream.binance.com/ws/${symb_f_xrp}@trade`);
@@ -962,7 +962,7 @@ async function f1(){
 
     ///////////////FUTURE call////////////////////////
     wsff_xrp.onmessage = (event) => {
-        //console.log(event.data);
+        //sconsole.log(event.data);
         let fut_p = JSON.parse(event.data).p;
         futyf_xrp.push(JSON.parse(fut_p));
 
@@ -974,6 +974,10 @@ async function f1(){
         tasaf_d_xrp.innerText = `${(tasa*100).toFixed(3)}%`;
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
+
+        futf_xrp.innerText = parseFloat(futterf_xrp).toFixed(2);
+
+        tasaf_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
 
         if(anual > 15){
             spots_xrp.style.color = "rgb(197, 197, 197)";
@@ -994,9 +998,6 @@ async function f1(){
 
         }
 
-        futf_xrp.innerText = parseFloat(futterf_xrp).toFixed(2);
-
-        tasaf_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
 
 
         
