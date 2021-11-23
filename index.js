@@ -246,23 +246,22 @@ async function f1(){
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
         if(anual >= 15){
-            spots_btc.style.color = "rgb(197, 197, 197)";
-            futf_btc.style.color = "rgb(197, 197, 197)";
-            tasaf_a_btc.style.color = "rgb(0, 255, 34)";
-            tasaf_d_btc.style.color = "rgb(0, 255, 34)";
+            spot_eth.style.color = "rgb(197, 197, 197)";
+            fut_eth.style.color = "rgb(197, 197, 197)";
+            tasa_a_eth.style.color = "rgb(0, 255, 34)";
+            tasa_d_eth.style.color = "rgb(0, 255, 34)";
 
         }else if(anual < 10){
-            spots_btc.style.color = "black";
-            futf_btc.style.color = "black";
-            tasaf_d_btc.style.color = "black";
-            tasaf_a_btc.style.color = "rgb(255, 0, 34)";
+            spot_eth.style.color = "black";
+            fut_eth.style.color = "black";
+            tasa_d_eth.style.color = "black";
+            tasa_a_eth.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_btc.style.color = "rgb(197, 197, 197)";
-            futf_btc.style.color = "rgb(197, 197, 197)";
-            tasaf_a_btc.style.color = "rgb(197, 197, 197)";
-            tasaf_d_btc.style.color = "yellow";
+            spot_eth.style.color = "rgb(197, 197, 197)";
+            fut_eth.style.color = "rgb(197, 197, 197)";
+            tasa_a_eth.style.color = "rgb(197, 197, 197)";
+            tasa_d_eth.style.color = "yellow";
         }
-
 
 
 
@@ -382,9 +381,12 @@ async function f1(){
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
 
-        if(anual > 15){
-            fut_bnb.style.color = "rgb(197, 197, 197)";
+        fut_bnb.innerText = parseFloat(futter_bnb).toFixed(2);
+        tasa_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
+
+        if(anual >= 15){
             spot_bnb.style.color = "rgb(197, 197, 197)";
+            fut_bnb.style.color = "rgb(197, 197, 197)";
             tasa_a_bnb.style.color = "rgb(0, 255, 34)";
             tasa_d_bnb.style.color = "rgb(0, 255, 34)";
 
@@ -394,15 +396,11 @@ async function f1(){
             tasa_d_bnb.style.color = "black";
             tasa_a_bnb.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_bnb.style.color = "black";
-            fut_bnb.style.color = "black";
-            tasa_a_bnb.style.color = "yellow";
+            spot_bnb.style.color = "rgb(197, 197, 197)";
+            fut_bnb.style.color = "rgb(197, 197, 197)";
+            tasa_a_bnb.style.color = "rgb(197, 197, 197)";
             tasa_d_bnb.style.color = "yellow";
         }
-
-
-        fut_bnb.innerText = parseFloat(futter_bnb).toFixed(2);
-        tasa_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
     }
 
 
@@ -519,26 +517,28 @@ async function f1(){
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
 
-        if(anual > 15){
-            fut_dot.style.color = "rgb(197, 197, 197)";
+        fut_dot.innerText = parseFloat(futter_dot).toFixed(2);
+        tasa_a_dot.innerHTML = `${anual.toFixed(3)}%`;
+    
+        if(anual >= 15){
             spot_dot.style.color = "rgb(197, 197, 197)";
+            fut_dot.style.color = "rgb(197, 197, 197)";
             tasa_a_dot.style.color = "rgb(0, 255, 34)";
             tasa_d_dot.style.color = "rgb(0, 255, 34)";
+
         }else if(anual < 10){
             spot_dot.style.color = "black";
             fut_dot.style.color = "black";
             tasa_d_dot.style.color = "black";
             tasa_a_dot.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_dot.style.color = "black";
-            fut_dot.style.color = "black";
-            tasa_a_dot.style.color = "yellow";
+            spot_dot.style.color = "rgb(197, 197, 197)";
+            fut_dot.style.color = "rgb(197, 197, 197)";
+            tasa_a_dot.style.color = "rgb(197, 197, 197)";
             tasa_d_dot.style.color = "yellow";
         }
 
-        fut_dot.innerText = parseFloat(futter_dot).toFixed(2);
-        tasa_a_dot.innerHTML = `${anual.toFixed(3)}%`;
-
+        
     }
 
 
@@ -652,9 +652,12 @@ async function f1(){
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
 
-        if(anual > 15){
-            fut_bch.style.color = "rgb(197, 197, 197)";
+        fut_bch.innerText = parseFloat(futter_bch).toFixed(2);
+        tasa_a_bch.innerHTML = `${anual.toFixed(3)}%`;
+
+        if(anual >= 15){
             spot_bch.style.color = "rgb(197, 197, 197)";
+            fut_bch.style.color = "rgb(197, 197, 197)";
             tasa_a_bch.style.color = "rgb(0, 255, 34)";
             tasa_d_bch.style.color = "rgb(0, 255, 34)";
 
@@ -664,18 +667,11 @@ async function f1(){
             tasa_d_bch.style.color = "black";
             tasa_a_bch.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_bch.style.color = "black";
-            fut_bch.style.color = "black";
-            tasa_a_bch.style.color = "yellow";
+            spot_bch.style.color = "rgb(197, 197, 197)";
+            fut_bch.style.color = "rgb(197, 197, 197)";
+            tasa_a_bch.style.color = "rgb(197, 197, 197)";
             tasa_d_bch.style.color = "yellow";
-
         }
-
-
-        fut_bch.innerText = parseFloat(futter_bch).toFixed(2);
-        tasa_a_bch.innerHTML = `${anual.toFixed(3)}%`;
-
-        
 
 
     }
@@ -788,9 +784,12 @@ async function f1(){
         tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
 
 
-        if(anual > 15){
-            fut_ada.style.color = "rgb(197, 197, 197)";
+        fut_ada.innerText = parseFloat(futter_ada).toFixed(2);
+        tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+
+        if(anual >= 15){
             spot_ada.style.color = "rgb(197, 197, 197)";
+            fut_ada.style.color = "rgb(197, 197, 197)";
             tasa_a_ada.style.color = "rgb(0, 255, 34)";
             tasa_d_ada.style.color = "rgb(0, 255, 34)";
 
@@ -800,16 +799,11 @@ async function f1(){
             tasa_d_ada.style.color = "black";
             tasa_a_ada.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_ada.style.color = "black";
-            fut_ada.style.color = "black";
-            tasa_a_ada.style.color = "yellow";
+            spot_ada.style.color = "rgb(197, 197, 197)";
+            fut_ada.style.color = "rgb(197, 197, 197)";
+            tasa_a_ada.style.color = "rgb(197, 197, 197)";
             tasa_d_ada.style.color = "yellow";
         }
-
-        fut_ada.innerText = parseFloat(futter_ada).toFixed(2);
-        tasa_a_ada.innerHTML = `${anual.toFixed(3)}%`;
-
-
 
 
     }
@@ -928,27 +922,26 @@ async function f1(){
 
         let anual = ((((tasa/diff3m)+1)**365)-1)*100;
 
-        if(anual > 15){
-            fut_xrp.style.color = "rgb(197, 197, 197)";
+        fut_xrp.innerText = parseFloat(futter_xrp).toFixed(4);
+        tasa_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
+
+        if(anual >= 15){
             spot_xrp.style.color = "rgb(197, 197, 197)";
+            fut_xrp.style.color = "rgb(197, 197, 197)";
             tasa_a_xrp.style.color = "rgb(0, 255, 34)";
             tasa_d_xrp.style.color = "rgb(0, 255, 34)";
+
         }else if(anual < 10){
             spot_xrp.style.color = "black";
             fut_xrp.style.color = "black";
             tasa_d_xrp.style.color = "black";
             tasa_a_xrp.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_xrp.style.color = "black";
-            fut_xrp.style.color = "black";
-            tasa_a_xrp.style.color = "yellow";
+            spot_xrp.style.color = "rgb(197, 197, 197)";
+            fut_xrp.style.color = "rgb(197, 197, 197)";
+            tasa_a_xrp.style.color = "rgb(197, 197, 197)";
             tasa_d_xrp.style.color = "yellow";
-
         }
-
-
-        fut_xrp.innerText = parseFloat(futter_xrp).toFixed(4);
-        tasa_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
 
     }
 
