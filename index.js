@@ -150,8 +150,8 @@ async function f1(){
         
         futf_btc.innerText = parseFloat(futterf_btc).toFixed(2);
         tasaf_a_btc.innerHTML = `${anual.toFixed(3)}%`;
-
-        if(anual > 15){
+        
+        if(anual >= 15){
             spots_btc.style.color = "rgb(197, 197, 197)";
             futf_btc.style.color = "rgb(197, 197, 197)";
             tasaf_a_btc.style.color = "rgb(0, 255, 34)";
@@ -160,16 +160,15 @@ async function f1(){
         }else if(anual < 10){
             spots_btc.style.color = "black";
             futf_btc.style.color = "black";
-            tasa_d_ada.style.color = "black";
+            tasa_d_ada.style.color= "black";
             tasaf_a_btc.style.color = "rgb(255, 0, 34)";
-            
         }else{
-            spots_btc.style.color = "black";
-            futf_btc.style.color = "black";
-            tasa_a_btc.style.color = "yellow";
+            spots_btc.style.color = "rgb(197, 197, 197)";
+            futf_btc.style.color  = "rgb(197, 197, 197)";
+            tasa_a_btc.style.color = "rgb(197, 197, 197)";
             tasa_d_btc.style.color = "yellow";
-            
         }
+
 
 
 
@@ -247,21 +246,21 @@ async function f1(){
         tasa_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
         if(anual >= 15){
-            spot_eth.style.color = "rgb(197, 197, 197)";
-            fut_eth.style.color = "rgb(197, 197, 197)";
-            tasa_a_eth.style.color = "rgb(0, 255, 34)";
-            tasa_d_eth.style.color = "rgb(0, 255, 34)";
+            spots_btc.style.color = "rgb(197, 197, 197)";
+            futf_btc.style.color = "rgb(197, 197, 197)";
+            tasaf_a_btc.style.color = "rgb(0, 255, 34)";
+            tasaf_d_btc.style.color = "rgb(0, 255, 34)";
 
         }else if(anual < 10){
-            spot_eth.style.color = "black";
-            fut_eth.style.color = "black";
-            tasa_d_eth.style.color = "black";
-            tasa_a_eth.style.color = "rgb(255, 0, 34)";
+            spots_btc.style.color = "black";
+            futf_btc.style.color = "black";
+            tasaf_d_btc.style.color = "black";
+            tasaf_a_btc.style.color = "rgb(255, 0, 34)";
         }else{
-            spot_eth.style.color = "rgb(197, 197, 197)";
-            fut_eth.style.color = "rgb(197, 197, 197)";
-            tasa_a_eth.style.color = "rgb(197, 197, 197)";
-            tasa_d_eth.style.color = "yellow";
+            spots_btc.style.color = "rgb(197, 197, 197)";
+            futf_btc.style.color = "rgb(197, 197, 197)";
+            tasaf_a_btc.style.color = "rgb(197, 197, 197)";
+            tasaf_d_btc.style.color = "yellow";
         }
 
 
@@ -287,7 +286,7 @@ async function f1(){
         futf_eth.innerText = parseFloat(futterf_eth).toFixed(2);
         tasaf_a_eth.innerHTML = `${anual.toFixed(3)}%`;
 
-        if(anual > 15){
+        if(anual >= 15){
             spots_eth.style.color = "rgb(197, 197, 197)";
             futf_eth.style.color = "rgb(197, 197, 197)";
             tasaf_a_eth.style.color = "rgb(0, 255, 34)";
@@ -296,15 +295,13 @@ async function f1(){
         }else if(anual < 10){
             spots_eth.style.color = "black";
             futf_eth.style.color = "black";
-            tasa_d_ada.style.color = "black";
+            tasaf_d_eth.style.color = "black";
             tasaf_a_eth.style.color = "rgb(255, 0, 34)";
-            
         }else{
-            spots_eth.style.color = "black";
-            futf_eth.style.color = "black";
-            tasa_a_eth.style.color = "yellow";
-            tasa_d_eth.style.color = "yellow";
-            
+            spots_eth.style.color = "rgb(197, 197, 197)";
+            futf_eth.style.color = "rgb(197, 197, 197)";
+            tasaf_a_eth.style.color = "rgb(197, 197, 197)";
+            tasaf_d_eth.style.color = "yellow";
         }
 
 
@@ -425,28 +422,26 @@ async function f1(){
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
 
-        if(anual > 15){
+        futf_bnb.innerText = parseFloat(futterf_bnb).toFixed(2);
+        tasaf_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
+
+        if(anual >= 15){
             spots_bnb.style.color = "rgb(197, 197, 197)";
             futf_bnb.style.color = "rgb(197, 197, 197)";
             tasaf_a_bnb.style.color = "rgb(0, 255, 34)";
             tasaf_d_bnb.style.color = "rgb(0, 255, 34)";
+
         }else if(anual < 10){
             spots_bnb.style.color = "black";
             futf_bnb.style.color = "black";
             tasaf_d_bnb.style.color = "black";
             tasaf_a_bnb.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_bnb.style.color = "black";
-            futf_bnb.style.color = "black";
-            tasaf_a_bnb.style.color = "yellow";
+            spots_bnb.style.color = "rgb(197, 197, 197)";
+            futf_bnb.style.color = "rgb(197, 197, 197)";
+            tasaf_a_bnb.style.color = "rgb(197, 197, 197)";
             tasaf_d_bnb.style.color = "yellow";
-
         }
-
-
-        futf_bnb.innerText = parseFloat(futterf_bnb).toFixed(2);
-        tasaf_a_bnb.innerHTML = `${anual.toFixed(3)}%`;
-
 
         
     }
@@ -561,7 +556,11 @@ async function f1(){
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
 
-        if(anual > 15){
+        futf_dot.innerText = parseFloat(futterf_dot).toFixed(2);
+        tasaf_a_dot.innerHTML = `${anual.toFixed(3)}%`;
+
+        
+        if(anual >= 15){
             spots_dot.style.color = "rgb(197, 197, 197)";
             futf_dot.style.color = "rgb(197, 197, 197)";
             tasaf_a_dot.style.color = "rgb(0, 255, 34)";
@@ -573,16 +572,11 @@ async function f1(){
             tasaf_d_dot.style.color = "black";
             tasaf_a_dot.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_dot.style.color = "black";
-            futf_dot.style.color = "black";
-            tasaf_a_dot.style.color = "yellow";
+            spots_dot.style.color = "rgb(197, 197, 197)";
+            futf_dot.style.color = "rgb(197, 197, 197)";
+            tasaf_a_dot.style.color = "rgb(197, 197, 197)";
             tasaf_d_dot.style.color = "yellow";
-
         }
-
-        futf_dot.innerText = parseFloat(futterf_dot).toFixed(2);
-        tasaf_a_dot.innerHTML = `${anual.toFixed(3)}%`;
-
         
     }
 
@@ -701,27 +695,27 @@ async function f1(){
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
 
-        if(anual > 15){
+        futf_bch.innerText = parseFloat(futterf_bch).toFixed(2);
+        tasaf_a_bch.innerHTML = `${anual.toFixed(3)}%`;
+
+
+        if(anual >= 15){
             spots_bch.style.color = "rgb(197, 197, 197)";
             futf_bch.style.color = "rgb(197, 197, 197)";
             tasaf_a_bch.style.color = "rgb(0, 255, 34)";
             tasaf_d_bch.style.color = "rgb(0, 255, 34)";
+
         }else if(anual < 10){
             spots_bch.style.color = "black";
             futf_bch.style.color = "black";
             tasaf_d_bch.style.color = "black";
             tasaf_a_bch.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_bch.style.color = "black";
-            futf_bch.style.color = "black";
-            tasaf_a_bch.style.color = "yellow";
+            spots_bch.style.color = "rgb(197, 197, 197)";
+            futf_bch.style.color = "rgb(197, 197, 197)";
+            tasaf_a_bch.style.color = "rgb(197, 197, 197)";
             tasaf_d_bch.style.color = "yellow";
         }
-
-        futf_bch.innerText = parseFloat(futterf_bch).toFixed(2);
-        tasaf_a_bch.innerHTML = `${anual.toFixed(3)}%`;
-
-
     }
 
 
@@ -837,7 +831,11 @@ async function f1(){
 
         let anual = ((((tasa/diff6m)+1)**365)-1)*100;
 
-        if(anual > 15){
+        futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
+        tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
+
+
+        if(anual >= 15){
             spots_ada.style.color = "rgb(197, 197, 197)";
             futf_ada.style.color = "rgb(197, 197, 197)";
             tasaf_a_ada.style.color = "rgb(0, 255, 34)";
@@ -849,16 +847,11 @@ async function f1(){
             tasaf_d_ada.style.color = "black";
             tasaf_a_ada.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_ada.style.color = "black";
-            futf_ada.style.color = "black";
-            tasaf_a_ada.style.color = "yellow";
+            spots_ada.style.color = "rgb(197, 197, 197)";
+            futf_ada.style.color = "rgb(197, 197, 197)";
+            tasaf_a_ada.style.color = "rgb(197, 197, 197)";
             tasaf_d_ada.style.color = "yellow";
         }
-
-        futf_ada.innerText = parseFloat(futterf_ada).toFixed(2);
-        tasaf_a_ada.innerHTML = `${anual.toFixed(3)}%`;
-
-
     }
 
 
@@ -979,7 +972,7 @@ async function f1(){
 
         tasaf_a_xrp.innerHTML = `${anual.toFixed(3)}%`;
 
-        if(anual > 15){
+        if(anual >= 15){
             spots_xrp.style.color = "rgb(197, 197, 197)";
             futf_xrp.style.color = "rgb(197, 197, 197)";
             tasaf_a_xrp.style.color = "rgb(0, 255, 34)";
@@ -991,17 +984,15 @@ async function f1(){
             tasaf_d_xrp.style.color = "black";
             tasaf_a_xrp.style.color = "rgb(255, 0, 34)";
         }else{
-            spots_xrp.style.color = "black";
-            futf_xrp.style.color = "black";
-            tasaf_a_xrp.style.color = "yellow";
+            spots_xrp.style.color = "rgb(197, 197, 197)";
+            futf_xrp.style.color = "rgb(197, 197, 197)";
+            tasaf_a_xrp.style.color = "rgb(197, 197, 197)";
             tasaf_d_xrp.style.color = "yellow";
-
         }
 
 
 
-        
-
+    
 
     }
 
